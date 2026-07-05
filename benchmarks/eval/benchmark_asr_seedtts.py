@@ -102,6 +102,7 @@ async def run_asr_seedtts_once(
     model_path: str = QWEN3_ASR_MODEL_PATH,
     lang: str = "en",
     warmup: int = 0,
+    disable_tqdm: bool = True,
 ) -> dict:
     """Run one SeedTTS ASR benchmark pass and return WER/speed/worker metrics."""
     before = _fetch_worker_snapshot(host, port)
@@ -113,6 +114,7 @@ async def run_asr_seedtts_once(
         lang=lang,
         concurrency=concurrency,
         warmup=warmup,
+        disable_tqdm=disable_tqdm,
     )
     after = _fetch_worker_snapshot(host, port)
 
